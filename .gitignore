@@ -1,0 +1,9 @@
+# Dependency directory
+vendor/
+
+# Go module files
+go.sum
+
+# IDE specific files
+.vscode/
+.idea/
