@@ -1,7 +1,8 @@
 # go-ptr
 
 ![CI](https://github.com/jackcipher/go-ptr/actions/workflows/ci.yml/badge.svg)
-[![Go Report Card](https://goreportcard.com/badge/github.com/jackcipher/go-ptr)](https://goreportcard.com/report/github.com/jackcipher/go-ptr)
+![Go Version](https://img.shields.io/badge/go%20version-%3E=1.18-61CFDD.svg?style=flat-square)
+
 
 The ptr package provides utility functions for working with pointers in Go. It includes functions to create pointers for various types, check if a pointer is nil, and retrieve values from pointers with default fallbacks.
 
