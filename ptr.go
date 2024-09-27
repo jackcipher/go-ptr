@@ -103,3 +103,32 @@ func Filter[T any](slice []T, f func(T) bool) []T {
 	}
 	return result
 }
+
+// MapKeys 返回映射的所有键
+func MapKeys[K comparable, V any](m map[K]V) []K {
+	keys := make([]K, 0, len(m))
+	for k := range m {
+		keys = append(keys, k)
+	}
+	return keys
+}
+
+// Reduce 对切片中的元素应用函数f，将结果合并为一个单一的值
+func Reduce[T, U any](slice []T, f func(U, T) U, initial U) U {
+	accumulator := initial
+	for _, v := range slice {
+		accumulator = f(accumulator, v)
+	}
+	return accumulator
+}
+
+
+// FirstOrDefault 返回切片中的第一个元素，如果切片为空则返回默认值
+func FirstOrDefault[T any](slice []T, defaultValue T) T {
+	if len(slice) > 0 {
+		return slice[0]
+	}
+	return defaultValue
+}
+
+

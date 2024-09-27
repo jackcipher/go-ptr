@@ -150,3 +150,54 @@ func TestFilter(t *testing.T) {
 		}
 	}
 }
+
+// TestMapKeys tests the MapKeys function.
+func TestMapKeys(t *testing.T) {
+	m := map[string]int{"a": 1, "b": 2, "c": 3}
+	expected := []string{"a", "b", "c"}
+	keys := MapKeys(m)
+
+	for _, key := range expected {
+		found := false
+		for _, k := range keys {
+			if k == key {
+				found = true
+				break
+			}
+		}
+		if !found {
+			t.Errorf("Expected key %s not found", key)
+		}
+	}
+}
+
+// TestReduce tests the Reduce function.
+func TestReduce(t *testing.T) {
+	slice := []int{1, 2, 3, 4}
+	sum := Reduce(slice, func(acc int, v int) int {
+		return acc + v
+	}, 0)
+
+	if sum != 10 {
+		t.Errorf("Expected sum to be 10, got %d", sum)
+	}
+}
+
+// TestFirstOrDefault tests the FirstOrDefault function.
+func TestFirstOrDefault(t *testing.T) {
+	slice := []int{1, 2, 3}
+	defaultValue := 0
+	result := FirstOrDefault(slice, defaultValue)
+
+	if result != 1 {
+		t.Errorf("Expected first element to be 1, got %d", result)
+	}
+
+	emptySlice := []int{}
+	resultEmpty := FirstOrDefault(emptySlice, defaultValue)
+
+	if resultEmpty != defaultValue {
+		t.Errorf("Expected default value %d, got %d", defaultValue, resultEmpty)
+	}
+}
+
